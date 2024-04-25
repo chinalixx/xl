@@ -78,5 +78,23 @@ var player = new Aliplayer({
     console.log("The player is created");
 });
 </script>
+
+    	<script type="text/javascript" >
+	     var video = document.getElementById("player-con");
+			var currentTime = localStorage.getItem("currentTime");
+			
+			video.addEventListener("loadedmetadata",function(){
+			    this.currentTime = currentTime;
+			});
+			video.addEventListener("timeupdate",function(){
+			    var currentTime = Math.floor(video.currentTime);
+			    localStorage.setItem("currentTime",currentTime);
+			    console.log(localStorage.getItem("currentTime"));
+			});
+			function weixin_ClosePage() {
+			    WeixinJSBridge.call("closeWindow");
+			}
+
+	</script> 
 </body>
 </html>
