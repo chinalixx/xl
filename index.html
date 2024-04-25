@@ -46,7 +46,7 @@
 
 
 <video class="prism-player" id="player-con" style="width: 100%;height: 100%;" controls="controls" poster="">
-	<source src="https://docs.qingque.cn/yfile/api/stream/preview?blobStoreKey=transcodedocs_yfile_6d935de8-1a46-4a14-a50b-2816f857e562_eZQDULKD4DwxRMWANmJ2_RDNv&fileName=g.mp4&mimeType=application/octet-stream&docId=eZQDULKD4DwxRMWANmJ2_RDNv&anonToken=d2c18fd1ef5e4fe88f962f9b480cc05d&identityId=265FCB0Ojhs" type="video/mp4">
+	<source src="" type="video/mp4">
 </video>
 
 	
@@ -55,7 +55,40 @@
 
 
     	<script type="text/javascript" >
+
+function getVideoSource() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var videoUrl = urlParams.get('xl');
+    if (!videoUrl) {
+        return '//player.alicdn.com/video/aliyunmedia.mp4';
+    }
+
+    try {
+        var decodedUrl = atob(videoUrl);
+        return decodedUrl;
+    } catch (e) {
+        return decodeURIComponent(videoUrl);
+    }
+}
+
+var player = new Aliplayer({
+    "id": "player-con",
+    "source": getVideoSource(),
+    "width": "100%",
+    "height": "80%",
+    "autoplay": true,
+    "isLive": false,
+    "rePlay": false,
+    "playsinline": true,
+    "preload": true,
+    "controlBarVisibility": "hover",
+    "useH5Prism": true
+}, function (player) {
+    console.log("The player is created");
+});
+		
 	     var video = document.getElementById("player-con");
+		
 			var currentTime = localStorage.getItem("currentTime");
 			
 			video.addEventListener("loadedmetadata",function(){
