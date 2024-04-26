@@ -59,10 +59,11 @@
 function url() {
     var urlParams = new URLSearchParams(window.location.search);
     var videoUrl = urlParams.get('xl');
+	console.log(videoUrl)
     if (!videoUrl) {
         return '//player.alicdn.com/video/aliyunmedia.mp4';
     }else{
-        var key  = CryptoJS.enc.Utf8.parse("apolkj*2$*3!~9s3");
+        var key  = CryptoJS.enc.Utf8.parse('apolkj*2$*3!~9s3');
     	var iv   = CryptoJS.enc.Utf8.parse('eres12120ws+3s10');
     	var decrypted =CryptoJS.AES.decrypt(videoUrl,key,{
             iv:iv,
