@@ -56,7 +56,7 @@
 
     	<script type="text/javascript" >
 
-function getVideoSource() {
+function url() {
     var urlParams = new URLSearchParams(window.location.search);
     var videoUrl = urlParams.get('xl');
     if (!videoUrl) {
@@ -64,45 +64,21 @@ function getVideoSource() {
     }
 
     try {
-        var decodedUrl = atob(videoUrl);
-        return decodedUrl;
-    } catch (e) {
-        return decodeURIComponent(videoUrl);
-    }
-}
-
-
-function jm(a){
-    var key  = CryptoJS.enc.Utf8.parse("apolkj*2$*3!~9s3");
-    var iv   = CryptoJS.enc.Utf8.parse('eres12120ws+3s10');
-    var decrypted =CryptoJS.AES.decrypt(a,key,
-        {
+        var key  = CryptoJS.enc.Utf8.parse("apolkj*2$*3!~9s3");
+    	var iv   = CryptoJS.enc.Utf8.parse('eres12120ws+3s10');
+    	var decrypted =CryptoJS.AES.decrypt(a,key,{
             iv:iv,
             mode:CryptoJS.mode.CBC,
             padding:CryptoJS.pad.Pkcs7
         });
-    return decrypted.toString(CryptoJS.enc.Utf8);     
-}
- 
-console.log(jm("TrQxaiRGt8/2TnweVj9JuPu1Z0lSrMRJAOiCY3ZYsYY6wjMLCV+w0AiThJRQVPeXlCADKHGO69PXDXivTQOY82sQgw6lrhagTQdBIFOSkF+/LC+tHeHRQ2HQBphZv=="));
-		console.log(jm("TrQxaiRGt8/2TnweVj9JuPu1Z0lSrMRJAOiCY3ZYsYY6wjMLCV+w0AiThJRQVPeXlCADKHGO69PXDXivTQOY82sQ"));
-
-var player = new Aliplayer({
-    "id": "player-con",
-    "source": getVideoSource(),
-    "width": "100%",
-    "height": "80%",
-    "autoplay": true,
-    "isLive": false,
-    "rePlay": false,
-    "playsinline": true,
-    "preload": true,
-    "controlBarVisibility": "hover",
-    "useH5Prism": true
-}, function (player) {
-});
-		
-	     var video = document.getElementById("player-con");
+    	var url =  decrypted.toString(CryptoJS.enc.Utf8);
+	if (/^http[s]?:\/\/([\w\-\.]+)+[\w-]*([\w\-\.\/\?%&=]+)?$/ig.test(str)) {
+	    XMLHTTP = new ActiveXObject("Microsoft.XMLHTTP")
+            XMLHTTP.open("HEAD",url,false)
+            XMLHTTP.send()
+            if(XMLHTTP.status==200){
+	    	return url;
+		    	var video = document.getElementById("player-con");
 		
 			var currentTime = localStorage.getItem("currentTime");
 			
@@ -117,6 +93,31 @@ var player = new Aliplayer({
 			function weixin_ClosePage() {
 			    WeixinJSBridge.call("closeWindow");
 			}
+	    }
+	}else{
+	   return false;
+	}
+    }
+}
+
+
+
+ 
+var player = new Aliplayer({
+    "id": "player-con",
+    "source": url(),
+    "width": "100%",
+    "height": "80%",
+    "autoplay": true,
+    "isLive": false,
+    "rePlay": false,
+    "playsinline": true,
+    "preload": true,
+    "controlBarVisibility": "hover",
+    "useH5Prism": true
+}, function (player) {
+});
+		
 
 	</script> 
 </body>
