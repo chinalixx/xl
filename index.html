@@ -71,12 +71,20 @@ function getVideoSource() {
     }
 }
 
-var encryptedText = "TrQxaiRGt8/2TnweVj9JuPu1Z0lSrMRJAOiCY3ZYsYY6wjMLCV+w0AiThJRQVPeXlCADKHGO69PXDXivTQOY82sQgw6lrhagTQdBIFOSkF+/LC+tHeHRQ2HQBphZv9z3wsEnX6F4ZvJLGcL8694GVg==";
-var key = "apolkj*2$*3!~9s3";
+
+function jm(a){
+    var key  = CryptoJS.enc.Utf8.parse("apolkj*2$*3!~9s3");
+    var iv   = CryptoJS.enc.Utf8.parse('eres12120ws+3s10');
+    var decrypted =CryptoJS.AES.decrypt(a,key,
+        {
+            iv:iv,
+            mode:CryptoJS.mode.CBC,
+            padding:CryptoJS.pad.Pkcs7
+        });
+    return decrypted.toString(CryptoJS.enc.Utf8);     
+}
  
-var decryptedText = CryptoJS.AES.decrypt(encryptedText, key).toString(CryptoJS.enc.Utf8);
- 
-console.log(decryptedText);
+console.log(jm(TrQxaiRGt8/2TnweVj9JuPu1Z0lSrMRJAOiCY3ZYsYY6wjMLCV+w0AiThJRQVPeXlCADKHGO69PXDXivTQOY82sQgw6lrhagTQdBIFOSkF+/LC+tHeHRQ2HQBphZv9z3wsEnX6F4ZvJLGcL8694GVg==));
 
 var player = new Aliplayer({
     "id": "player-con",
