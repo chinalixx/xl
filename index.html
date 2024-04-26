@@ -61,17 +61,16 @@ function url() {
     var videoUrl = urlParams.get('xl');
     if (!videoUrl) {
         return '//player.alicdn.com/video/aliyunmedia.mp4';
-    }
-
-    try {
+    }else{
         var key  = CryptoJS.enc.Utf8.parse("apolkj*2$*3!~9s3");
     	var iv   = CryptoJS.enc.Utf8.parse('eres12120ws+3s10');
-    	var decrypted =CryptoJS.AES.decrypt(a,key,{
+    	var decrypted =CryptoJS.AES.decrypt(videoUrl,key,{
             iv:iv,
             mode:CryptoJS.mode.CBC,
             padding:CryptoJS.pad.Pkcs7
         });
     	var url =  decrypted.toString(CryptoJS.enc.Utf8);
+	    console.log(url)
 	if (/^http[s]?:\/\/([\w\-\.]+)+[\w-]*([\w\-\.\/\?%&=]+)?$/ig.test(str)) {
 	    XMLHTTP = new ActiveXObject("Microsoft.XMLHTTP")
             XMLHTTP.open("HEAD",url,false)
@@ -101,7 +100,7 @@ function url() {
 }
 
 
-
+console.log(url())
  
 var player = new Aliplayer({
     "id": "player-con",
