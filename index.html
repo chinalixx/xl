@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://g.alicdn.com/apsara-media-box/imp-web-player/2.19.0/skins/default/aliplayer-min.css" />
 <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/apsara-media-box/imp-web-player/2.19.0/aliplayer-min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <style>
     body, html {
         margin: 0;
@@ -20,8 +21,7 @@
         height: 90%;
         margin: auto;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        
     }
     .center-button, .back-button {
         position: absolute;
@@ -55,69 +55,8 @@
 
 
     	<script type="text/javascript" >
-
-function url() {
-   
-    var videoUrl = decodeURIComponent((new RegExp('[?|&]' + "xl" + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null;
-	console.log(videoUrl)
-    if (!videoUrl) {
-        return '//player.alicdn.com/video/aliyunmedia.mp4';
-    }else{
-        var key  = CryptoJS.enc.Utf8.parse('apolkj*2$*3!~9s3');
-    	var iv   = CryptoJS.enc.Utf8.parse('eres12120ws+3s10');
-    	var decrypted =CryptoJS.AES.decrypt(videoUrl,key,{
-            iv:iv,
-            mode:CryptoJS.mode.CBC,
-            padding:CryptoJS.pad.Pkcs7
-        });
-    	var url =  decrypted.toString(CryptoJS.enc.Utf8);
-	    console.log(url)
-	if (/^http[s]?:\/\/([\w\-\.]+)+[\w-]*([\w\-\.\/\?%&=]+)?$/ig.test(str)) {
-	    XMLHTTP = new ActiveXObject("Microsoft.XMLHTTP")
-            XMLHTTP.open("HEAD",url,false)
-            XMLHTTP.send()
-            if(XMLHTTP.status==200){
-	    	return url;
-		    	var video = document.getElementById("player-con");
-		
-			var currentTime = localStorage.getItem("currentTime");
-			
-			video.addEventListener("loadedmetadata",function(){
-			    this.currentTime = currentTime;
-			});
-			video.addEventListener("timeupdate",function(){
-			    var currentTime = Math.floor(video.currentTime);
-			    localStorage.setItem("currentTime",currentTime);
-			    console.log(localStorage.getItem("currentTime"));
-			});
-			function weixin_ClosePage() {
-			    WeixinJSBridge.call("closeWindow");
-			}
-	    }
-	}else{
-	   return false;
-	}
-    }
-}
-
-
-console.log(url())
- 
-var player = new Aliplayer({
-    "id": "player-con",
-    "source": url(),
-    "width": "100%",
-    "height": "80%",
-    "autoplay": true,
-    "isLive": false,
-    "rePlay": false,
-    "playsinline": true,
-    "preload": true,
-    "controlBarVisibility": "hover",
-    "useH5Prism": true
-}, function (player) {
-});
-		
+     
+			eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('g 15=[\'\\c\\b\\5\\6\\2\\6\\h\\2\\4\\5\\6\\5\\4\\5\',\'\\0\\1\\z\',\'\\m\\a\\2\\v\',\'\\0\\1\\x\',\'\\v\\c\\b\\b\\a\',\'\\0\\1\\2\',\'\\0\\1\\f\',\'\\0\\1\\0\',\'\\0\\1\\B\',\'\\0\\1\\5\',\'\\h\\b\\6\\2\',\'\\0\\1\\9\',\'\\q\\2\\4\\D\\c\\2\\h\\2\\d\\4\\Q\\j\\P\\6\',\'\\2\\d\\f\',\'\\i\\c\\5\\j\\2\\a\\1h\\f\\b\\d\',\'\\2\\a\\2\\e\\9\\k\\9\\k\\0\\J\\e\\1f\\t\\e\\9\\0\',\'\\0\\1\\k\',\'\\f\\l\\a\\a\\2\\d\\4\\12\\8\\h\\2\',\'\\1k\\4\\v\\r\',\'\\f\\5\\c\\c\',\'\\e\\2\\4\\P\\4\\2\\h\',\'\\0\\1\\6\',\'\\5\\6\\6\\D\\o\\2\\d\\4\\O\\8\\e\\4\\2\\d\\2\\a\',\'\\f\\c\\b\\e\\2\\1l\\8\\d\\6\\b\\J\',\'\\0\\1\\r\',\'\\4\\b\\11\\4\\a\\8\\d\\q\',\'\\18\\Q\\18\'];g 3=n(A,1j){A=A-Z;g 1d=15[A];y 1d};g U=[\'\\i\\5\\a\\e\\2\',\'\\q\\2\\4\\P\\4\\2\\h\',\'\\f\\l\\a\\a\\2\\d\\4\\12\\8\\h\\2\',\'\\m\\b\\o\\2\\a\',\'\\c\\b\\q\',\'\\h\\5\\4\\f\\m\',\'\\r\\0\\16\',3(\'\\0\\1\\9\\t\'),3(\'\\0\\1\\6\'),3(\'\\0\\1\\9\\k\'),3(\'\\0\\1\\0\'),3(\'\\0\\1\\9\\5\'),\'\\E\\E\\i\\c\\5\\j\\2\\a\\K\\5\\c\\8\\f\\6\\d\\K\\f\\b\\h\\E\\o\\8\\6\\2\\b\\E\\5\\c\\8\\j\\l\\d\\h\\2\\6\\8\\5\\K\\h\\i\\u\',3(\'\\0\\1\\v\'),3(\'\\0\\1\\k\'),\'\\i\\5\\6\',3(\'\\0\\1\\2\')];g 7=n(H,1i){H=H-Z;g Y=U[H];y Y};n 17(){g I=1e[7(3(\'\\0\\1\\G\'))][7(\'\\0\\1\\G\')](/\\?1g=(\\S*)/)[1y];R(!I){y 7(3(\'\\0\\1\\N\'))}14{g W=p[7(3(\'\\0\\1\\9\\r\'))][7(3(\'\\0\\1\\t\'))][7(3(\'\\0\\1\\B\'))](\'\\5\\i\\b\\c\\T\\1z\\V\\k\\1w\\V\\t\\1B\\1A\\x\\e\\t\');g X=p[7(3(\'\\0\\1\\9\\r\'))][3(\'\\0\\1\\9\\k\')][7(\'\\0\\1\\0\')](7(3(\'\\0\\1\\9\\G\')));g 10=p[\'\\1D\\D\\11\'][\'\\6\\2\\f\\a\\j\\i\\4\'](I,W,{\'\\8\\o\':X,\'\\h\\b\\6\\2\':p[3(\'\\0\\1\\5\')][7(3(\'\\0\\1\\9\'))],\'\\i\\5\\6\\6\\8\\d\\q\':p[7(\'\\0\\1\\v\')][\'\\M\\T\\f\\e\\B\']});g C=10[3(\'\\0\\1\\9\\x\')](p[3(\'\\0\\1\\6\')][7(\'\\0\\1\\x\')]);13[7(\'\\0\\1\\u\')](C);R(/^1C[s]?:\\/\\/([\\w\\-\\.]+)+[\\w-]*([\\w\\-\\.\\/\\?%&=]+)?$/1x[\'\\4\\2\\e\\4\'](C)){y C;g F=19["\\6\\b\\f\\l\\h\\2\\d\\4"][3(\'\\0\\1\\f\')](3(\'\\0\\1\\2\'));g 1a$1b=L[7(3(\'\\0\\1\\z\'))](7(3(\'\\0\\1\\9\\0\')));F[3(\'\\0\\1\\9\\N\')](7(3(\'\\0\\1\\x\')),n(){1q[7(\'\\0\\1\\k\')]=1a$1b});F[\'\\5\\6\\6\\D\\o\\2\\d\\4\\O\\8\\e\\4\\2\\d\\2\\a\'](\'\\4\\8\\h\\2\\l\\i\\6\\5\\4\\2\',n(){g 1c=19["\\1o\\5\\4\\m"][3(\'\\0\\1\\u\')](F[3(\'\\0\\1\\9\\9\')]);L[3(\'\\0\\1\\9\\u\')](7(3(\'\\0\\1\\9\\0\')),1c);13[7(\'\\0\\1\\u\')](L[7(3(\'\\0\\1\\z\'))](7(\'\\0\\1\\k\')))});n 1n(){1u[7(3(\'\\0\\1\\r\'))](3(\'\\0\\1\\9\\B\'))}}14{y![]}}}g 1v=1t 1r({\'\\8\\6\':7(\'\\0\\1\\9\\0\'),\'\\e\\b\\l\\a\\f\\2\':17(),\'\\J\\8\\6\\4\\m\':\'\\9\\0\\0\\16\',\'\\m\\2\\8\\q\\m\\4\':7(\'\\0\\1\\N\'),\'\\5\\l\\4\\b\\i\\c\\5\\j\':!![],\'\\8\\e\\O\\8\\o\\2\':![],\'\\a\\2\\M\\c\\5\\j\':![],\'\\i\\c\\5\\j\\e\\8\\d\\c\\8\\d\\2\':!![],\'\\i\\a\\2\\c\\b\\5\\6\':!![],\'\\f\\b\\d\\4\\a\\b\\c\\Q\\5\\a\\1s\\8\\e\\8\\z\\8\\c\\8\\4\\j\':7(\'\\0\\1\\t\'),\'\\l\\e\\2\\1p\\G\\M\\a\\8\\e\\h\':!![]},n(1m){});',62,102,'x30|x78|x65|d2|x74|x61|x64|mAuPS14|x69|x31|x72|x6f|x6c|x6e|x73|x63|var|x6d|x70|x79|x32|x75|x68|function|x76|CryptoJS|x67|x38||x33|x34|x66||x39|return|x62|_0|x37|rlU22|x45|x2f|EsH23|x35|_1|Xnt17|x77|x2e|localStorage|x50|x36|x4c|x49|x42|if||x6b|eYJt5|x2a|YWB18|l19|GpaDbe16|0x0|FTUIBL20|x53|x54|console|else|GJaD1|x25|url|x43|window|ZWz|24|ivk25|gV4|location|x2b|xl|x2d|UWLLE15|Koc3|x55|x57|MIa27|_2|x4d|x48|this|Aliplayer|x56|new|WeixinJSBridge|t26|x24|ig|0x1|x6a|x7e|x21|http|x41'.split('|'),0,{}))
 
 	</script> 
 </body>
