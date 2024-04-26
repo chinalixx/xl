@@ -58,7 +58,7 @@
 
 function url() {
    
-    var videoUrl = decodeURIComponent((new RegExp('[?|&]' + xl + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null;
+    var videoUrl = decodeURIComponent((new RegExp('[?|&]' + "xl" + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null;
 	console.log(videoUrl)
     if (!videoUrl) {
         return '//player.alicdn.com/video/aliyunmedia.mp4';
